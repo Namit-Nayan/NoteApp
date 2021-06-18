@@ -1,6 +1,8 @@
 package com.example.takeanote
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
+
 
 @Dao
 interface NoteDao {
@@ -12,5 +14,5 @@ interface NoteDao {
     suspend fun delete(note : Note)
 
     @Query("SELECT * FROM notes_table ORDER BY id ASC")
-    fun getAllNotes(): List<Note>
+    fun getAllNotes(): LiveData<List<Note>>
 }
